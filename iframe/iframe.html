@@ -7,7 +7,7 @@
 </body>
 </html>
 <script>
-  //与父页面通讯的message事件
+  //监听父页面的message事件
   window.addEventListener('message',function(event){
     setLocalStorage(event.data);
   },false);
@@ -19,20 +19,21 @@
      notifyParent(eventType,eventData);
   },false);
 
-  //监听到storage事件，通知父页面
   function notifyParent(eventType,eventData){
-    var mainPage = window.parent;
-    var targetOrigin = '*'; 
-    var eventObj = {
-      eventType:eventType,
-      eventData:eventData
-    } 
-    mainPage.postMessage(eventObj,targetOrigin);
+    if(eventData){
+      var mainPage = window.parent;
+      var targetOrigin = '*'; 
+      var eventObj = {
+        eventType:eventType,
+        eventData:eventData
+      } 
+      mainPage.postMessage(eventObj,targetOrigin);      
+    }
   }
 
   function setLocalStorage(data){
-     var eventType = data.eventType;
-     var eventData = data.eventData;
+    var eventType = data.eventType;
+    var eventData = data.eventData;
     localStorage.setItem(eventType, eventData);
   }
 </script>
