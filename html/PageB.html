@@ -13,7 +13,6 @@
 <script>
   
   var libEvent = window.u.event;
-
   libEvent.bind('demoType',function(event){
     onMessage(event)
   });
@@ -27,13 +26,14 @@
     }
     libEvent.fire(eventObj);
   }
-  
+
+  var index = 0;
   function onMessage(event){
     console.log(event.origin +' '+event.data.eventType +' '+event.data.eventData);
     var eventType = event.data.eventType;
     var eventData = event.data.eventData;
     var p = document.createElement('p');
-    p.innerHTML="eventType："+eventType +"; "+"eventData："+eventData;
+    p.innerHTML= ++index+":  "+"eventType："+eventType +"; "+"eventData："+eventData;
     document.body.appendChild(p);
   }
 </script>

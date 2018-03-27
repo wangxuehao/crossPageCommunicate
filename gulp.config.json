@@ -1,0 +1,8 @@
+{
+  "dev":{
+    "port":"9023",
+    "domain":"localhost",
+    "pageAUrl":"http://main.com:9023/html/PageA.html",
+    "pageBUrl":"http://main.com:9023/html/PageB.html"
+  }
+}
