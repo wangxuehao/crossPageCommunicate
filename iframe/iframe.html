@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>iframe page</title>
+</head>
+<body>
+  <p>iframe</p>
+</body>
+</html>
+<script>
+  //与父页面通讯的message事件
+  window.addEventListener('message',function(event){
+    setLocalStorage(event.data);
+  },false);
+
+  //监听localstorage的storage事件
+  window.addEventListener("storage",function(e){
+     var eventType = e.key;
+     var eventData = e.newValue;
+     notifyParent(eventType,eventData);
+  },false);
+
+  //监听到storage事件，通知父页面
+  function notifyParent(eventType,eventData){
+    var mainPage = window.parent;
+    var targetOrigin = '*'; 
+    var eventObj = {
+      eventType:eventType,
+      eventData:eventData
+    } 
+    mainPage.postMessage(eventObj,targetOrigin);
+  }
+
+  function setLocalStorage(data){
+     var eventType = data.eventType;
+     var eventData = data.eventData;
+    localStorage.setItem(eventType, eventData);
+  }
+</script>

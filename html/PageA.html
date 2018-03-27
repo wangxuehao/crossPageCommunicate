@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>Page A</title>
+  <script type="text/javascript" src = "http://localhost:9023/lib/lib.js"></script>
+</head>
+<body>
+  <p>Page A</p>
+  <input type="input" id="input">
+  <input type="button" value="send message" onclick="fireEvnet()">
+  <br>
+</body>
+</html>
+<script>
+  
+  var libEvent = window.u.event;
+  libEvent.bind('demoType',function(event){
+    onMessage(event)
+  });
+
+  function fireEvnet(){
+    var eventType = "demoType";
+    var eventData = document.getElementById('input').value;
+    var eventObj = {
+        eventType:eventType,
+        eventData:eventData
+    }
+    libEvent.fire(eventObj);
+  }
+
+  function onMessage(event){
+    console.log(event.origin +' '+event.data.eventType +' '+event.data.eventData);
+    var eventType = event.data.eventType;
+    var eventData = event.data.eventData;
+    var p = document.createElement('p');
+    p.innerHTML="eventType："+eventType +"; "+"eventData："+eventData;
+    document.body.appendChild(p);
+  }
+</script>

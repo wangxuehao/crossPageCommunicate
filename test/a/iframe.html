@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>iframe page</title>
+</head>
+<body>
+  <p>iframe</p>
+</body>
+</html>
+<script>
+  function setLocalStorage(val){
+    // var random = Math.random();
+    localStorage.setItem('a1', val);
+  }
+
+  window.addEventListener('message',function(event){
+    var dataFromParent = event.data;
+    setLocalStorage(dataFromParent);
+  },false);
+
+  window.addEventListener("storage",function(e){
+     // console.log(e);
+     var storageVal = localStorage.getItem('a1');
+     notifyParent(storageVal);
+  },false);
+
+  function notifyParent(storageVal){
+    var mainPage = window.parent;
+    var targetOrigin = '*';  
+    mainPage.postMessage(storageVal,targetOrigin);
+  }
+</script>
