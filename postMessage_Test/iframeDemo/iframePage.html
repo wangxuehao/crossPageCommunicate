@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>postMessage Demo - iframe subPage</title>
+</head>
+<body>
+  sub page
+  <input type="button" value="send message" onclick="sendMessage()">
+</body>
+</html>
+<script>
+  window.addEventListener('message',function(event){
+    onMessage(event);
+  },false);
+
+  var index = 0;
+  function onMessage(event){
+    // console.log(event.origin +' '+event.data+' '+event.source);
+    var p = document.createElement('p');
+    p.innerHTML= ++index+":  "+"eventOrign："+event.origin +"; "+"eventData："+event.data;
+    document.body.appendChild(p);
+  }
+
+  function sendMessage(){
+    var mainPage = window.parent;
+    var targetOrigin = 'http://main.com:9023/postMessage_Test/iframeDemo/launcherPage.html';  
+    mainPage.postMessage('data form subPage',targetOrigin);
+  }
+</script>

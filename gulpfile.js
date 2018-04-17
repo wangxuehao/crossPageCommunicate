@@ -27,4 +27,14 @@ gulp.task("openBrowser",function(){
 });
 
 
+//task：打开测试页
+gulp.task("openBrowser_postMessage",function(){
+  var pageUrl = gulpConfig.dev.pageUrl_postMessage
+  return gulp.src('')
+    .pipe(gulpOpen({
+      uri:pageUrl
+    }));
+});
+
 gulp.task("dev", gulpSequence(['server','openBrowser']));
+gulp.task("postMsg", gulpSequence(['server','openBrowser_postMessage']));

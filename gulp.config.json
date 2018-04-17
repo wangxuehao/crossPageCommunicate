@@ -3,6 +3,7 @@
     "port":"9023",
     "domain":"localhost",
     "pageAUrl":"http://main.com:9023/html/PageA.html",
-    "pageBUrl":"http://main.com:9023/html/PageB.html"
+    "pageBUrl":"http://sub.com:9023/html/PageB.html",
+    "pageUrl_postMessage":"http://main.com:9023/postMessage_Test/iframeDemo/launcherPage.html"
   }
 }
