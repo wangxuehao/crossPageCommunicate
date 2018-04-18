@@ -27,9 +27,19 @@ gulp.task("openBrowser",function(){
 });
 
 
-//task：打开测试页
+//task：打开postMessage测试页
 gulp.task("openBrowser_postMessage",function(){
-  var pageUrl = gulpConfig.dev.pageUrl_postMessage
+  var pageUrl = gulpConfig.dev.pageUrl_postMessage;
+  return gulp.src('')
+    .pipe(gulpOpen({
+      uri:pageUrl
+    }));
+});
+
+
+//task：打开localStorage测试页
+gulp.task("openBrowser_localStorage",function(){
+  var pageUrl = gulpConfig.dev.pageUrl_localStorage;
   return gulp.src('')
     .pipe(gulpOpen({
       uri:pageUrl
@@ -38,3 +48,4 @@ gulp.task("openBrowser_postMessage",function(){
 
 gulp.task("dev", gulpSequence(['server','openBrowser']));
 gulp.task("postMsg", gulpSequence(['server','openBrowser_postMessage']));
+gulp.task("localStorage", gulpSequence(['server','openBrowser_localStorage']));

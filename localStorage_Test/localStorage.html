@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>localStorage Test</title>
+</head>
+<body>
+  <p id="p" onclick="foo()">set localStorage</p>
+  <p id="p1" onclick="clearLocalStorage()">remove localStorage</p>
+</body>
+</html>
+<script>
+
+  window.addEventListener('storage',function(event){
+    // alert(event);
+     console.log(localStorage);
+  },false);
+
+
+  function setLocalStorage(item,val){
+    localStorage.setItem(item,val);
+    // console.log(localStorage);
+  }
+  
+  function getLocalStorage(item){
+     var storageVal = localStorage.getItem(item);
+     return storageVal;
+  }
+
+  function clearLocalStorage(){
+     localStorage.clear();
+     console.log(localStorage);
+  }
+
+  function foo(){
+    setLocalStorage('a1',Math.random());
+    var res = getLocalStorage('a1');
+    // alert(res);
+  }
+</script>
