@@ -2,8 +2,8 @@
   "dev":{
     "port":"9023",
     "domain":"localhost",
-    "pageAUrl":"http://main.com:9023/html/PageA.html",
-    "pageBUrl":"http://sub.com:9023/html/PageB.html",
+    "pageAUrl":"http://main.com:9023/util-v1/html/PageA.html",
+    "pageBUrl":"http://sub.com:9023/util-v1/html/PageB.html",
     "pageUrl_postMessage":"http://main.com:9023/postMessage_Test/iframeDemo/launcherPage.html",
     "pageUrl_localStorage":"http://main.com:9023/localStorage_Test/localStorage.html"
   }

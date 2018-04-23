@@ -117,7 +117,7 @@ function hasLoadIframe(){
 
 function appendIframe(callback){
   var iframeEle = document.createElement('iframe');
-  iframeEle.src = '//iframe.iqiyi.com:9023/iframe/iframe.html';
+  iframeEle.src = '//iframe.iqiyi.com:9023/util-v1/iframe/iframe.html';
   iframeEle.id = 'i71_u_event_iframe';
   iframeEle.style.display = "none";
   document.body.appendChild(iframeEle);
