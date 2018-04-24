@@ -46,6 +46,23 @@ gulp.task("openBrowser_localStorage",function(){
     }));
 });
 
+
+//task：打开util-v2测试页
+gulp.task("openBrowser_util",function(){
+  var pageA = gulpConfig.dev.pageA_util_v2;
+  var pageB = gulpConfig.dev.pageB_util_v2;
+  return gulp.src('')
+    .pipe(gulpOpen({
+      uri:pageA
+    }))
+    .pipe(gulpOpen({
+      uri:pageB
+    }));
+});
+
 gulp.task("dev", gulpSequence(['server','openBrowser']));
 gulp.task("postMsg", gulpSequence(['server','openBrowser_postMessage']));
 gulp.task("localStorage", gulpSequence(['server','openBrowser_localStorage']));
+gulp.task("util", gulpSequence(['server','openBrowser_util']));
+
+

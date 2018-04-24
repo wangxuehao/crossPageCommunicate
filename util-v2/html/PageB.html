@@ -1,0 +1,36 @@
+<html>
+<head>
+  <title>Page B</title>
+  <script type="text/javascript" src = "http://localhost:9023/util-v2/lib/lib.js"></script>
+</head>
+<body>
+  <p>Page B</p>
+  <input type="input" id="input">
+  <input type="button" value="send message" onclick="fireEvent1()">
+  <br>
+</body>
+</html>
+<script>
+  var utilEvent = window.u.event;
+  utilEvent.on('demoType',function(event){
+    eventHandler(event);
+  });
+
+  function fireEvent1(){
+    var eventType = "demoType";
+    var eventData = document.getElementById('input').value;
+    utilEvent.fire({
+        type:eventType,
+        data:eventData
+    });
+  }
+
+  var index = 0;
+  function eventHandler(event){
+    var eventType = event.type;
+    var eventData = event.data;
+    var p = document.createElement('p');
+    p.innerHTML= ++index+":  "+"eventType："+eventType +"; "+"eventData："+eventData;
+    document.body.appendChild(p);
+  }
+</script>
