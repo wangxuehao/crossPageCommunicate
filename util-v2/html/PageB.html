@@ -15,20 +15,31 @@
   utilEvent.on('demoType',function(event){
     eventHandler(event);
   });
+  // setTimeout(function(){
+  //   utilEvent.un('demoType')
+  // },5000);
 
   function fireEvent1(){
     var eventType = "demoType";
     var eventData = document.getElementById('input').value;
-    utilEvent.fire({
-        type:eventType,
-        data:eventData
-    });
+
+// eventData = {
+//   "abc":123,
+//   "cde":false,
+//   "ggg":"false",
+//   "aaa":"66sad6"
+// };
+// eventData = '{"abc":123,"cde":false,"ggg":"false","aaa":"66sad6"}';
+// eventData =[1,2,3];
+
+    utilEvent.fire(eventType,eventData);
   }
 
   var index = 0;
   function eventHandler(event){
     var eventType = event.type;
     var eventData = event.data;
+    console.log(eventData);
     var p = document.createElement('p');
     p.innerHTML= ++index+":  "+"eventType："+eventType +"; "+"eventData："+eventData;
     document.body.appendChild(p);
