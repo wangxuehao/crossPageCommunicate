@@ -70,7 +70,8 @@ function on(type,listener){
 
 function fire(type,data){
   var eventData = data;
-  if(data === undefined || data === null ){
+  //如果data为undefined、null或者Function类型，将data置为空。
+  if(data === undefined || data === null || Object.prototype.toString.call(data)=== '[object Function]'){
     eventData = "";
   }
   eventData = JSON.stringify(eventData);
@@ -86,8 +87,19 @@ function fire(type,data){
  * https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent
  */
 function noticeCurrentPage(type,data){
+  var myLocalStorage = {
+      setItem : function(k,v){
+      　　localStorage.setItem(k,v);
+      },
+      removeItem : function(k){
+      　　localStorage.removeItem(k);
+      },
+      getItem :function(k){
+      　　localStorage.getItem(k);
+      },
+  };
   var storageEvent = document.createEvent("StorageEvent");
-  storageEvent.initStorageEvent('storage', false, false, type,'',data,'','');
+  storageEvent.initStorageEvent('storage', false, false, type,'',data);
   window.dispatchEvent(storageEvent);
 }
 
